@@ -2,11 +2,11 @@ import email
 from imapclient import IMAPClient
 from email.header import decode_header
 from email.utils import parsedate_to_datetime
-from app.config import EMAIL_ADDRESS, EMAIL_PASSWORD, IMAP_SERVER, IMAP_PORT
+from app.config import EMAIL_ADDRESS, EMAIL_PASS, IMAP_SERVER, IMAP_PORT
 
 def fetch_unseen_emails():
     with IMAPClient('imap.gmail.com') as client:
-        client.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+        client.login(EMAIL_ADDRESS, EMAIL_PASS)
         client.select_folder('INBOX')
 
         # Search for unseen (unread) emails
