@@ -6,3 +6,6 @@ class EmailSummaryRequest(BaseModel):
 
 class SummarizedEmail(BaseModel):
     summary: str
+
+class ReplySuggestion(BaseModel):
+    email_content: str

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.model import EmailSummaryRequest, SummarizedEmail
+from app.model import EmailSummaryRequest, SummarizedEmail, ReplySuggestion
 from app.agent import summarize_email
 from app.graph import build_graph
 
@@ -19,3 +19,8 @@ def process_inbox():
     graph = build_graph()
     final_state = graph.invoke({})
     return {"message": "Inbox processed", "state": final_state}
+
+@app.post("/suggest-reply")
+def suggest_reply(request: ReplySuggestion):
+    result = suggest_reply(request.email_content)
+    return {"reply": result}
